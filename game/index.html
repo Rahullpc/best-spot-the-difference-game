@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eagle Eye — Spot the Difference</title>
+<link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div id="brand">
+      <div id="gameTitle">EAGLE EYE</div>
+      <div id="gameSubtitle">Spot the Difference</div>
+    </div>
+    <div id="hud">
+      <div class="hud-pill" id="levelPill"><span class="hud-label">Level</span><span class="hud-value" id="levelLabel">1 / 3</span></div>
+      <div class="hud-pill" id="scenePill"><span class="hud-label">Scene</span><span class="hud-value" id="sceneLabel">City Park</span></div>
+      <div class="hud-pill" id="timerPill"><span class="hud-label">Time</span><span class="hud-value" id="timerLabel">3:00</span></div>
+      <div class="hud-pill" id="scorePill"><span class="hud-label">Score</span><span class="hud-value" id="scoreLabel">0</span></div>
+      <div class="hud-pill" id="remainingPill"><span class="hud-label">Remaining</span><span class="hud-value" id="remainingLabel">8</span></div>
+      <div class="hud-pill" id="hintsPill"><span class="hud-label">Hints</span><span class="hud-value" id="hintsLabel">3</span></div>
+    </div>
+  </header>
+
+  <main id="stage">
+    <canvas id="gameCanvas" width="1240" height="460"></canvas>
+
+    <div id="menuOverlay" class="overlay">
+      <div class="card">
+        <h1>EAGLE EYE</h1>
+        <p class="tagline">Spot the Difference</p>
+        <p class="howto">Two pictures stand side by side. They look the same — but <b>8 differences</b> hide between them. Click a difference on either picture to circle it. Find them all before the clock runs out.</p>
+        <p class="howto small">Wrong click: −5 seconds. Hint (H): reveals one difference. M: sound on/off. R: restart level.</p>
+        <div id="levelCards">
+          <button class="level-card" data-level="0"><span class="level-num">1</span><span class="level-name">City Park</span><span class="level-diff">8 differences · 3:00</span></button>
+          <button class="level-card" data-level="1"><span class="level-num">2</span><span class="level-name">Kitchen</span><span class="level-diff">8 differences · 3:00</span></button>
+          <button class="level-card" data-level="2"><span class="level-num">3</span><span class="level-name">Beach</span><span class="level-diff">8 differences · 3:00</span></button>
+        </div>
+        <button id="startBtn" class="big-btn">Start Level 1</button>
+      </div>
+    </div>
+
+    <div id="levelCompleteOverlay" class="overlay hidden">
+      <div class="card">
+        <h1 id="levelCompleteTitle">Level Complete!</h1>
+        <p class="tagline" id="levelCompleteScene">City Park — all 8 differences found</p>
+        <p class="score-line">Level score: <b id="levelScore">0</b> &nbsp;·&nbsp; Time bonus: <b id="timeBonus">0</b></p>
+        <p class="score-line">Total score: <b id="totalScoreAfterLevel">0</b></p>
+        <button id="nextLevelBtn" class="big-btn">Next Level</button>
+        <button id="replayLevelBtn" class="ghost-btn">Replay This Level</button>
+      </div>
+    </div>
+
+    <div id="gameOverOverlay" class="overlay hidden">
+      <div class="card">
+        <h1>Time&rsquo;s Up!</h1>
+        <p class="tagline" id="gameOverScene">You found 3 of 8 differences.</p>
+        <p class="howto">The differences you missed are still hiding. Try again — you know where some of them are now.</p>
+        <button id="retryBtn" class="big-btn">Try Again</button>
+        <button id="gameOverMenuBtn" class="ghost-btn">Back to Menu</button>
+      </div>
+    </div>
+
+    <div id="victoryOverlay" class="overlay hidden">
+      <div class="card">
+        <h1>You Did It!</h1>
+        <p class="tagline">Every difference in all 3 scenes — found.</p>
+        <p class="score-line">Final score: <b id="finalScore">0</b></p>
+        <p class="score-line" id="finalRank">Rank: Sharp-Eyed Detective</p>
+        <button id="playAgainBtn" class="big-btn">Play Again</button>
+        <button id="victoryMenuBtn" class="ghost-btn">Back to Menu</button>
+      </div>
+    </div>
+  </main>
+
+  <footer id="controls">
+    <button id="hintBtn" class="ctl-btn">💡 Hint (H) <span id="hintCount">3</span></button>
+    <button id="soundBtn" class="ctl-btn">🔊 Sound: On</button>
+    <button id="restartBtn" class="ctl-btn">↻ Restart (R)</button>
+    <button id="menuBtn" class="ctl-btn">☰ Menu</button>
+    <span id="messageLine">Click a difference on either picture.</span>
+  </footer>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

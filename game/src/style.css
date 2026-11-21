@@ -1,0 +1,250 @@
+/* Eagle Eye — Spot the Difference: page styling. Dark navy frame, warm amber
+   accents, high-contrast HUD pills so the remaining counter reads at a glance. */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0d1b2e;
+  color: #f4f1e8;
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 14px 14px;
+}
+
+#topbar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 6px 2px 10px;
+}
+
+#brand { line-height: 1.05; flex: 0 0 auto; }
+
+#gameTitle {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #ffc93c;
+}
+
+#gameSubtitle {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9fc3e8;
+}
+
+#hud {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.hud-pill {
+  background: #16294a;
+  border: 1px solid #2c4a73;
+  border-radius: 10px;
+  padding: 6px 12px;
+  min-width: 78px;
+  text-align: center;
+}
+
+.hud-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8fb4d9;
+}
+
+.hud-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+#remainingPill {
+  background: #ffc93c;
+  border-color: #ffdf7e;
+}
+
+#remainingPill .hud-label { color: #6b4d00; }
+#remainingPill .hud-value { color: #231a00; font-size: 24px; }
+
+#timerPill.low .hud-value { color: #ff6b5e; }
+
+#stage {
+  position: relative;
+  background: #12233d;
+  border: 1px solid #2c4a73;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: crosshair;
+  background: #bfe3f2;
+}
+
+.overlay {
+  position: absolute;
+  inset: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 18, 34, 0.72);
+  border-radius: 8px;
+  z-index: 5;
+}
+
+.overlay.hidden { display: none; }
+
+.card {
+  background: #f7f3e8;
+  color: #1c2b3a;
+  border-radius: 16px;
+  padding: 26px 34px;
+  max-width: 620px;
+  text-align: center;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+
+.card h1 {
+  margin: 0 0 4px;
+  font-size: 40px;
+  letter-spacing: 2px;
+  color: #123a5c;
+}
+
+.card .tagline {
+  margin: 0 0 14px;
+  font-size: 17px;
+  color: #b3541e;
+  font-weight: 700;
+}
+
+.card .howto {
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #33475c;
+}
+
+.card .howto.small { font-size: 13px; color: #5b7089; }
+
+.card .score-line {
+  margin: 6px 0;
+  font-size: 17px;
+  color: #33475c;
+}
+
+#levelCards {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.level-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 160px;
+  padding: 12px 10px;
+  border: 2px solid #c9d6e2;
+  border-radius: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.level-card:hover, .level-card.selected {
+  border-color: #e8960c;
+  background: #fff7e0;
+}
+
+.level-num {
+  font-size: 26px;
+  font-weight: 900;
+  color: #123a5c;
+}
+
+.level-name { font-size: 16px; font-weight: 800; color: #123a5c; }
+.level-diff { font-size: 12px; color: #5b7089; }
+
+.big-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 13px 34px;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: inherit;
+  color: #231a00;
+  background: #ffc93c;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #c78d00;
+}
+
+.big-btn:hover { background: #ffd75e; }
+.big-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #c78d00; }
+
+.ghost-btn {
+  display: inline-block;
+  margin: 10px 0 0 10px;
+  padding: 11px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #123a5c;
+  background: transparent;
+  border: 2px solid #9db4c8;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.ghost-btn:hover { border-color: #123a5c; }
+
+#controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ctl-btn {
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #f4f1e8;
+  background: #1d3a5f;
+  border: 1px solid #2c4a73;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.ctl-btn:hover { background: #26507f; }
+.ctl-btn:disabled { opacity: 0.45; cursor: default; }
+
+#messageLine {
+  margin-left: auto;
+  font-size: 15px;
+  color: #cfe0f2;
+  font-style: italic;
+  text-align: right;
+}
